@@ -24,7 +24,7 @@ Welcome to the **Tailor Management System (TMS)**! This PHP-based application is
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/d-i-v7/tms
+   git clone https://github.com/yourusername/tms.git
    cd tms
    ```
 
@@ -50,15 +50,14 @@ Welcome to the **Tailor Management System (TMS)**! This PHP-based application is
 
 5. **Start the Server**
 
-   - Using PHP's built-in server:
-     ```bash
-     php -S localhost:8000
-     ```
-   - Or configure your web server (Apache/Nginx) to point to the `public` directory.
+   - Using XAMPP or WAMP:
+     - Place the project folder in the `htdocs` directory (for XAMPP) or the `www` directory (for WAMP).
+     - Start Apache and MySQL from the XAMPP or WAMP control panel.
+     - Navigate to the project in your browser (e.g., `http://localhost/tms`).
 
 6. **Access the Application**
 
-   Open your browser and navigate to `http://localhost:8000`.
+   Open your browser and navigate to `http://localhost/tms`.
 
 ## Usage
 
