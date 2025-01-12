@@ -1,3 +1,20 @@
+<?php
+error_reporting(0);
+session_start();
+if (isset($_SESSION['userActive'], $_SESSION['adminActive']) ||
+    $_SESSION['userActive'] === true ||
+    $_SESSION['adminActive'] === true) 
+    {
+        $goUrl = $_SESSION['goUrl'];
+        // Redirect to the authentication page
+        header("Location: $goUrl");
+        exit; // Ensure no further code is executed after the redirect
+    // User is both active and an admin, allow access
+} else {
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -12,12 +29,11 @@
 	<meta property="og:description" content="Zenix - Crypto Admin Dashboard">
 	<meta property="og:image" content="https://zenix.dexignzone.com/xhtml/social-image.png">
 	<meta name="format-detection" content="telephone=no">
-    <title>Zenix -  Crypto Admin Dashboard </title>
+    <title>Login Form</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 	<link href="../vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-
 </head>
 
 <body class="vh-100">
@@ -33,28 +49,30 @@
 										<img src="../images/logo-full.png" alt="">
 									</div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
-                                    <form action="index.html">
+                                    <form id="loginForm">
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control">
+                                            <input id="email" name="email" type="email" class="form-control">
+                                            <label class="text-danger" id="emailError"></label>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control">
+                                            <input id="password" name="password" type="password" class="form-control">
+                                            <label class="text-danger" id="passwordError"></label>
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
-                                               <div class="custom-control custom-checkbox ml-1">
-													<input type="checkbox" class="custom-control-input" id="basic_checkbox_1">
+                                               <!-- <div class="custom-control custom-checkbox ml-1">
+													<input id="remember" name="remember" type="checkbox" class="custom-control-input">
 													<label class="custom-control-label" for="basic_checkbox_1">Remember my preference</label>
-												</div>
+												</div> -->
                                             </div>
                                             <div class="form-group">
                                                 <a href="page-forgot-password.html">Forgot Password?</a>
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                            <button type="submit" id="signInBtn" class="btn btn-primary btn-block">Sign Me In</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
@@ -80,5 +98,8 @@
 	<script src="../js/deznav-init.js"></script>
     <script src="../js/demo.js"></script>
     <script src="../js/styleSwitcher.js"></script>
+    <script src="../vendor/notify/notify.min.js"></script>
+    <script src="../vendor/notify/notify.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>
