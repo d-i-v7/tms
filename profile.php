@@ -41,17 +41,8 @@ include("assets/sideBar.php");
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-							<?php
-							include("config/conn.php");
-						$selectUser = mysqli_query($conn,"SELECT * FROM users WHERE id = '$userId'");
-        if($selectUser && mysqli_num_rows($selectUser)>0)
-        {
-				$row = mysqli_fetch_assoc($selectUser);
-				$userName = $row['fullName'];
-		}
-		?>
-                            <h4>Hi <?php  echo $userName; ?>, welcome back!</h4>
-                            <p class="mb-0">Your business dashboard template</p>
+                            <h4>Hi <strong class="profileUserName"></strong>, welcome back!</h4>
+                            <p class="mb-0">Empowering Creativity, One Idea at a Time</p>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -65,24 +56,27 @@ include("assets/sideBar.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile card card-body px-3 pt-3 pb-0">
-                            <div class="profile-head">
-                                <div class="photo-content">
-                                    <div class="cover-photo"></div>
+                            <div class="profile-head" style="position:relative;">
+								
+									<label style="position:absolute; z-index:100; padding:20px 25px; cursor:pointer; background-color:#fff; right:20px; bottom:120px; border-radius:50%; font-size:20px;" class="text-primary" for="updateCover"><i class="fas fa-camera"></i></label>
+									<input  id="updateCover" hidden type="file">
+						
+                                <div class="photo-content coverImage">
                                 </div>
                                 <div class="profile-info">
 									<div class="profile-photo">
-										<img src="images/profile/profile.png" class="img-fluid rounded-circle" alt="">
+										<img class="img-fluid rounded-circle profileImage"  alt="">
 									</div>
 									<div class="profile-details">
 										<div class="profile-name px-3 pt-2">
-											<h4 class="text-primary mb-0">Mitchell C. Shay</h4>
-											<p>UX / UI Designer</p>
+											<h4  class="text-primary mb-0 profileUserName" ></h4>
+											<p class="profileUserRole"></p>
 										</div>
-										<div class="profile-email px-2 pt-2">
+										<!-- <div class="profile-email px-2 pt-2">
 											<h4 class="text-muted mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670e09010827021f060a170b024904080a">[email&#160;protected]</a></h4>
 											<p>Email</p>
-										</div>
-										<div class="dropdown ml-auto">
+										</div> -->
+										<!-- <div class="dropdown ml-auto">
 											<a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
 											<ul class="dropdown-menu dropdown-menu-right">
 												<li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> View profile</li>
@@ -90,6 +84,18 @@ include("assets/sideBar.php");
 												<li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
 												<li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
 											</ul>
+										</div> -->
+										<div class="row ml-auto">
+											<div class="col-12">
+												<h1 class="text-center">20</h1>
+												<h4>Follow</h4>
+											</div>
+										</div>
+										<div class="row ml-auto">
+											<div class="col-12">
+												<h1 class="text-center">20</h1>
+												<h4>Follow</h4>
+											</div>
 										</div>
 									</div>
                                 </div>
@@ -98,263 +104,30 @@ include("assets/sideBar.php");
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-4">
-						<div class="row">
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-statistics">
-											<div class="text-center">
-												<div class="row">
-													<div class="col">
-														<h3 class="m-b-0">150</h3><span>Follower</span>
-													</div>
-													<div class="col">
-														<h3 class="m-b-0">140</h3><span>Place Stay</span>
-													</div>
-													<div class="col">
-														<h3 class="m-b-0">45</h3><span>Reviews</span>
-													</div>
-												</div>
-												<div class="mt-4">
-													<a href="javascript:void(0);" class="btn btn-primary mb-1 mr-1">Follow</a> 
-													<a href="javascript:void(0);" class="btn btn-primary mb-1" data-toggle="modal" data-target="#sendMessageModal">Send Message</a>
-												</div>
-											</div>
-											<!-- Modal -->
-											<div class="modal fade" id="sendMessageModal">
-												<div class="modal-dialog modal-dialog-centered" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title">Send Message</h5>
-															<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-														</div>
-														<div class="modal-body">
-															<form class="comment-form">
-																<div class="row"> 
-																	<div class="col-lg-6">
-																		<div class="form-group">
-																			<label class="text-black font-w600">Name <span class="required">*</span></label>
-																			<input type="text" class="form-control" value="Author" name="Author" placeholder="Author">
-																		</div>
-																	</div>
-																	<div class="col-lg-6">
-																		<div class="form-group">
-																			<label class="text-black font-w600">Email <span class="required">*</span></label>
-																			<input type="text" class="form-control" value="Email" placeholder="Email" name="Email">
-																		</div>
-																	</div>
-																	<div class="col-lg-12">
-																		<div class="form-group">
-																			<label class="text-black font-w600">Comment</label>
-																			<textarea rows="8" class="form-control" name="comment" placeholder="Comment"></textarea>
-																		</div>
-																	</div>
-																	<div class="col-lg-12">
-																		<div class="form-group mb-0">
-																			<input type="submit" value="Post Comment" class="submit btn btn-primary" name="submit">
-																		</div>
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-blog">
-											<h5 class="text-primary d-inline">Today Highlights</h5>
-											<img src="images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
-											<h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
-											<p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-interest">
-											<h5 class="text-primary d-inline">Interest</h5>
-											<div class="row mt-4 sp4" id="lightgallery">
-												<a href="images/profile/2.jpg" data-exthumbimage="images/profile/2.jpg" data-src="images/profile/2.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/2.jpg" alt="" class="img-fluid">
-												</a>
-												<a href="images/profile/3.jpg" data-exthumbimage="images/profile/3.jpg" data-src="images/profile/3.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/3.jpg" alt="" class="img-fluid">
-												</a>
-												<a href="images/profile/4.jpg" data-exthumbimage="images/profile/4.jpg" data-src="images/profile/4.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/4.jpg" alt="" class="img-fluid">
-												</a>
-												<a href="images/profile/3.jpg" data-exthumbimage="images/profile/3.jpg" data-src="images/profile/3.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/3.jpg" alt="" class="img-fluid">
-												</a>
-												<a href="images/profile/4.jpg" data-exthumbimage="images/profile/4.jpg" data-src="images/profile/4.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/4.jpg" alt="" class="img-fluid">
-												</a>
-												<a href="images/profile/2.jpg" data-exthumbimage="images/profile/2.jpg" data-src="images/profile/2.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
-													<img src="images/profile/2.jpg" alt="" class="img-fluid">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-news">
-											<h5 class="text-primary d-inline">Our Latest News</h5>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/5.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/6.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/7.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                    </div>
+                
                     <div class="col-xl-8">
                         <div class="card">
                             <div class="card-body">
                                 <div class="profile-tab">
                                     <div class="custom-tab-1">
                                         <ul class="nav nav-tabs">
-                                            <li class="nav-item"><a href="#my-posts" data-toggle="tab" class="nav-link active show">Posts</a>
+                                            <!-- <li class="nav-item"><a href="#my-posts" data-toggle="tab" class="nav-link active show">Posts</a> -->
                                             </li>
-                                            <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link">About Me</a>
+                                            <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link active show">About Me</a>
                                             </li>
                                             <li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content">
-                                            <div id="my-posts" class="tab-pane fade active show">
-                                                <div class="my-post-content pt-3">
-                                                    <div class="post-input">
-                                                        <textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea> 
-														<a href="javascript:void(0);" class="btn btn-primary light px-3" data-toggle="modal" data-target="#linkModal"><i class="fa fa-link m-0"></i> </a>
-														<!-- Modal -->
-														<div class="modal fade" id="linkModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Social Links</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<a class="btn-social facebook" href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-																		<a class="btn-social google-plus" href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-																		<a class="btn-social linkedin" href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-																		<a class="btn-social instagram" href="javascript:void(0)"><i class="fa fa-instagram"></i></a>
-																		<a class="btn-social twitter" href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-																		<a class="btn-social youtube" href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-																		<a class="btn-social whatsapp" href="javascript:void(0)"><i class="fa fa-whatsapp"></i></a>
-																	</div>
-																</div>
-															</div>
-														</div>
-                                                        <a href="javascript:void(0);" class="btn btn-primary light mr-1 px-3" data-toggle="modal" data-target="#cameraModal"><i class="fa fa-camera m-0"></i> </a>
-														<!-- Modal -->
-														<div class="modal fade" id="cameraModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Upload images</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<div class="input-group mb-3">
-																			<div class="input-group-prepend">
-																				<span class="input-group-text">Upload</span>
-																			</div>
-																			<div class="custom-file">
-																				<input type="file" class="custom-file-input">
-																				<label class="custom-file-label">Choose file</label>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#postModal">Post</a>
-														<!-- Modal -->
-														<div class="modal fade" id="postModal">
-															<div class="modal-dialog modal-dialog-centered" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title">Post</h5>
-																		<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		 <textarea name="textarea" id="textarea2" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea>
-																		 <a class="btn btn-primary btn-rounded" href="javascript:void(0)">Post</a>																		 
-																	</div>
-																</div>
-															</div>
-														</div>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post border-bottom-1 pb-5">
-                                                        <img src="images/profile/8.jpg" alt="" class="img-fluid w-100">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post border-bottom-1 pb-5">
-                                                        <img src="images/profile/9.jpg" alt="" class="img-fluid w-100">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                    <div class="profile-uoloaded-post pb-3">
-                                                        <img src="images/profile/8.jpg" alt="" class="img-fluid w-100">
-														<a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
-                                                        <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
-                                                            of spare which enjoy whole heart.</p>
-                                                        <button class="btn btn-primary mr-2"><span class="mr-2"><i class="fa fa-heart"></i></span>Like</button>
-                                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#replyModal"><span class="mr-2"><i class="fa fa-reply"></i></span>Reply</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="about-me" class="tab-pane fade">
+											<div id="about-me" class="tab-pane fade active show">
                                                 <div class="profile-about-me">
                                                     <div class="pt-4 border-bottom-1 pb-3">
                                                         <h4 class="text-primary">About Me</h4>
-                                                        <p class="mb-2">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                                                        <Is class="mb-2">My Name Is <strong class="profileUserName"></strong> My Email Is <strong class="profileUserEmail"></strong> I Am <strong class="profileUserRole"></strong> In This System</Is>
                                                         <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
                                                     </div>
                                                 </div>
-                                                <div class="profile-skills mb-5">
+                                                <!-- <div class="profile-skills mb-5">
                                                     <h4 class="text-primary mb-2">Skills</h4>
                                                     <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Admin</a>
                                                     <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Dashboard</a>
@@ -368,15 +141,15 @@ include("assets/sideBar.php");
 													<a href="javascript:void(0);" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> 
 													<a href="javascript:void(0);" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-fr"></i> French</a>
                                                     <a href="javascript:void(0);" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-bd"></i> Bangla</a>
-                                                </div>
+                                                </div> -->
                                                 <div class="profile-personal-info">
                                                     <h4 class="text-primary mb-4">Personal Information</h4>
                                                     <div class="row mb-2">
                                                         <div class="col-sm-3 col-5">
-                                                            <h5 class="f-w-500">Name <span class="pull-right">:</span>
+                                                            <h5 class="f-w-500 ">Name <span class="pull-right">:</span>
                                                             </h5>
                                                         </div>
-                                                        <div class="col-sm-9 col-7"><span>Mitchell C.Shay</span>
+                                                        <div class="col-sm-9 col-7 profileUserName"><span></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-2">
@@ -384,37 +157,14 @@ include("assets/sideBar.php");
                                                             <h5 class="f-w-500">Email <span class="pull-right">:</span>
                                                             </h5>
                                                         </div>
-                                                        <div class="col-sm-9 col-7"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9ccd1c8c4d9c5cce9ccd1c8c4d9c5ccc587cac6c4">[email&#160;protected]</a></span>
+                                                        <div class="col-sm-9 col-7 profileUserEmail"><span><img width="50px" src="images/typ.webp" alt="loading.."></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-2">
                                                         <div class="col-sm-3 col-5">
-                                                            <h5 class="f-w-500">Availability <span class="pull-right">:</span></h5>
+                                                            <h5 class="f-w-500">Role <span class="pull-right">:</span></h5>
                                                         </div>
-                                                        <div class="col-sm-9 col-7"><span>Full Time (Free Lancer)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-3 col-5">
-                                                            <h5 class="f-w-500">Age <span class="pull-right">:</span>
-                                                            </h5>
-                                                        </div>
-                                                        <div class="col-sm-9 col-7"><span>27</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-3 col-5">
-                                                            <h5 class="f-w-500">Location <span class="pull-right">:</span></h5>
-                                                        </div>
-                                                        <div class="col-sm-9 col-7"><span>Rosemont Avenue Melbourne,
-                                                                Florida</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-3 col-5">
-                                                            <h5 class="f-w-500">Year Experience <span class="pull-right">:</span></h5>
-                                                        </div>
-                                                        <div class="col-sm-9 col-7"><span>07 Year Experiences</span>
+                                                        <div class="col-sm-9 col-7 profileUserRole"><span></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -475,26 +225,6 @@ include("assets/sideBar.php");
                                             </div>
                                         </div>
                                     </div>
-									<!-- Modal -->
-									<div class="modal fade" id="replyModal">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title">Post Reply</h5>
-													<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-												</div>
-												<div class="modal-body">
-													<form>
-														<textarea class="form-control" rows="4">Message</textarea>
-													</form>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Reply</button>
-												</div>
-											</div>
-										</div>
-									</div>
                                 </div>
                             </div>
                         </div>
@@ -502,6 +232,7 @@ include("assets/sideBar.php");
                 </div>
             </div>
             </div>
+			
 <?php
 include("assets/footer.php");
 ?>

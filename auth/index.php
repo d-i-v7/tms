@@ -100,6 +100,7 @@ if (isset($_SESSION['userActive'], $_SESSION['adminActive']) ||
     <script src="../js/styleSwitcher.js"></script>
     <script src="../vendor/notify/notify.min.js"></script>
     <script src="../vendor/notify/notify.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/app.js"></script>
 </body>
 </html>

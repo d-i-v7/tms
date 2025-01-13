@@ -151,7 +151,53 @@ function login($conn)
  }
 }
 
+// Profile Logic Start Here
+function readProfile ($conn)
+{
+    $userId = $_SESSION['userId'];
+    $select = mysqli_query($conn , "SELECT * FROM users WHERE id = '$userId'");
+    if($select && mysqli_num_rows($select)>0)
+    {
+        $row = mysqli_fetch_assoc($select);
+        $userNames = $row['fullName'];
+        $email = $row['email'];
+        $userRole = $row['role'];
+        $userProfile = $row['profileImage'];
+        $userCover = $row['coverImage'];
 
+        if(empty($userCover))
+        {
+            $userCover = "images/dcover.jpg";
+
+        }
+        
+        if(empty($userProfile))
+        {
+            $userProfile = "images/dprofile.webp";
+        }
+        echo json_encode(['status'=>'success', 'userName'=>$userNames, 'email'=>$email,'userRole'=>$userRole,'userProfile'=>$userProfile,'userCover'=>$userCover]);
+
+    }
+    else
+    {
+        echo json_encode(['status'=>'error','message'=>'Some Thing Went Wrong']);
+
+    }
+}
+// Profile Logic End Here
+
+// Update Cover Image Start HEre
+function updateCover($conn)
+{
+   $updateCoverName =$_FILES['updateCover']['name'];
+   $updateCoverTmpName = $_FILES['updateCover']['tmp_name'];
+   $dir = "../uploads/usersImage/";
+   $dirAndName = $dir . $updateCoverName;
+   $xarey = "uploads/usersImage/".$updateCoverName;
+   move_uploaded_file($updateCoverTmpName, $dirAndName);
+    $update =mysqli_query($conn , "UPDATE users SET coverImage = '$xarey'");
+}
+// Update Cover Image End HEre
 
 
 // Qaybtaan Ku Shaqeey Abdirhamaan ⬇️

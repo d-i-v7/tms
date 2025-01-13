@@ -31,7 +31,7 @@ $userId = $_SESSION['userId'];
     <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- =================Css links End Here===================== -->
 </head>
@@ -270,10 +270,10 @@ $userId = $_SESSION['userId'];
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt="">
+                                    <img  width="20" class="profileImage" alt="">
 									<div class="header-info">
-										<span>Johndoe</span>
-										<small>Super Admin</small>
+										<span class="profileUserName"></span>
+										<small class="profileUserRole"></small>
 									</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
