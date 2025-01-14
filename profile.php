@@ -56,16 +56,18 @@ include("assets/sideBar.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile card card-body px-3 pt-3 pb-0">
-                            <div class="profile-head" style="position:relative;">
+                            <div class="profile-head" style="position:relative; ">
 								
 									<label style="position:absolute; z-index:100; padding:20px 25px; cursor:pointer; background-color:#fff; right:20px; bottom:120px; border-radius:50%; font-size:20px;" class="text-primary" for="updateCover"><i class="fas fa-camera"></i></label>
 									<input  id="updateCover" hidden type="file">
 						
-                                <div class="photo-content coverImage">
+                                <div class="photo-content coverImage" style="height:40vh; overflow:hidden;">
                                 </div>
                                 <div class="profile-info">
-									<div class="profile-photo">
-										<img class="img-fluid rounded-circle profileImage"  alt="">
+									<div style="width: 100px !important;  border-radius:50%; display:flex; justify-content:center; align-items:center; height:92px !important; overflow:hidden;" class="profile-photo">
+                                        <label class="text-primary" style="cursor: pointer; font-size:10px !important; padding:5px 7.5px; border:1px solid grey; background-color:#fff; position:absolute; bottom:8px;  right:5px; border-radius:50%;" for="updateProfile"><i class="fas fa-edit"></i></label>
+                                        <input  hidden id="updateProfile" type="file">
+										<img width="100%" height="100%" class="profileImage"  alt="">
 									</div>
 									<div class="profile-details">
 										<div class="profile-name px-3 pt-2">
@@ -105,7 +107,7 @@ include("assets/sideBar.php");
                 </div>
                 <div class="row">
                 
-                    <div class="col-xl-8">
+                    <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="profile-tab">
@@ -173,52 +175,29 @@ include("assets/sideBar.php");
                                                 <div class="pt-3">
                                                     <div class="settings-form">
                                                         <h4 class="text-primary">Account Setting</h4>
-                                                        <form>
+                                                        <form id="accountUpdate">
+                                                            <p class="text-danger">To Change Your Account You Must Enter Your Current Password!</p>
                                                             <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label>Full Name</label>
+                                                                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" class="form-control userNameAsValue">
+                                                                </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label>Email</label>
-                                                                    <input type="email" placeholder="Email" class="form-control">
+                                                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control emailAsValue">
                                                                 </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label>Password</label>
-                                                                    <input type="password" placeholder="Password" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Address</label>
-                                                                <input type="text" placeholder="1234 Main St" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Address 2</label>
-                                                                <input type="text" placeholder="Apartment, studio, or floor" class="form-control">
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
-                                                                    <label>City</label>
-                                                                    <input type="text" class="form-control">
+                                                                    <label>Current Password</label>
+                                                                    <input type="text" id="currentPassword" name="currentPassword" placeholder="Current Password" class="form-control">
                                                                 </div>
-                                                                <div class="form-group col-md-4">
-                                                                    <label>State</label>
-                                                                    <select class="form-control default-select" id="inputState">
-                                                                        <option selected="">Choose...</option>
-                                                                        <option>Option 1</option>
-                                                                        <option>Option 2</option>
-                                                                        <option>Option 3</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-2">
-                                                                    <label>Zip</label>
-                                                                    <input type="text" class="form-control">
+                                                                <div class="form-group col-md-6">
+                                                                    <label>New Password</label>
+                                                                    <input type="text" id="newPassword" name="newPassword" placeholder="New Password" class="form-control">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <div class="custom-control custom-checkbox">
-																	<input type="checkbox" class="custom-control-input" id="gridCheck">
-																	<label class="custom-control-label" for="gridCheck"> Check me out</label>
-																</div>
-                                                            </div>
-                                                            <button class="btn btn-primary" type="submit">Sign
-                                                                in</button>
+                                                            <button class="btn btn-primary" type="submit">Update</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -232,7 +211,18 @@ include("assets/sideBar.php");
                 </div>
             </div>
             </div>
-			
+			<style>
+             
+                .is-invalid {
+    border: 1px solid red !important;
+}
+.error-message {
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+            </style>
 <?php
 include("assets/footer.php");
 ?>

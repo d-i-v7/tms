@@ -199,6 +199,122 @@ function updateCover($conn)
 }
 // Update Cover Image End HEre
 
+// Update Profile Image Start HEre
+function updateProfile($conn)
+{
+   $updateProfileName =$_FILES['updateProfile']['name'];
+   $updateProfileTmpName = $_FILES['updateProfile']['tmp_name'];
+   $dir = "../uploads/usersImage/";
+   $dirAndName = $dir . $updateProfileName;
+   $xarey = "uploads/usersImage/".$updateProfileName;
+   move_uploaded_file($updateProfileTmpName, $dirAndName);
+    $update =mysqli_query($conn , "UPDATE users SET profileImage = '$xarey'");
+}
+// Update Cover Image End HEre
+
+function accountUpdate($conn)
+// accountUpdate Start herefunction accountUpdate($conn)
+{
+    extract($_POST);
+
+    // Initialize response array
+    $response = [
+        'status' => 'error',
+        'errors' => []
+    ];
+
+    // Validate Full Name
+    if (empty($fullName)) {
+        $response['errors'][] = [
+            'input' => 'fullName',
+            'message' => 'Full Name is required.'
+        ];
+    }
+
+    // Validate Email
+    if (empty($email)) {
+        $response['errors'][] = [
+            'input' => 'email',
+            'message' => 'Email is required.'
+        ];
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $response['errors'][] = [
+            'input' => 'email',
+            'message' => 'Invalid email format.'
+        ];
+    }
+    // Update function
+    function update($conn)
+    {
+        extract($_POST);
+        $userId = $_SESSION['userId'];
+        // New Password Validation
+        if($newPassword != NULL)
+        {
+         $newPassword = $newPassword;
+        }
+        else if($newPassword == NULL)
+        {
+            $newPassword = $currentPassword;
+        }
+        // The User Update Function
+        $update = mysqli_query($conn, "UPDATE users SET fullName = '$fullName', email = '$email' , password = '$newPassword' WHERE id = '$userId' ");
+        if ($update)
+        {
+            echo json_encode(['status' => 'success', 'message' => 'successfully Updated']);
+        }
+        else
+        {
+            echo json_encode(['status' => 'error', 'message' => 'failed']);
+        }
+    }
+    // Validate Current Password
+    if (empty($currentPassword)) {
+        $response['errors'][] = [
+            'input' => 'currentPassword',
+            'message' => 'To Change Your Info Your Must Entered Your Old Password!'
+        ];
+    }
+    else
+    {
+        $userId = $_SESSION['userId'];
+        $select = mysqli_query($conn  , "SELECT * FROM users WHERE id = '$userId' AND password = '$currentPassword'");
+        if($select && mysqli_num_rows($select)>0)
+        {
+            // When A Password is Correct Reload The update Function
+            update($conn);
+        }
+        else
+        {
+            $response['errors'][] = [
+                'input' => 'currentPassword',
+                'message' => 'Old Password Is Nor Valid!'
+            ];
+        }
+    }
+
+    // Validate New Password
+    // if ($newPassword != NULL) {
+    //     $response['errors'][] = [
+    //         'input' => 'newPassword',
+    //         'message' => 'New Password is required.'
+    //     ];
+    // } elseif (strlen($newPassword) < 6) {
+    //     $response['errors'][] = [
+    //         'input' => 'newPassword',
+    //         'message' => 'New Password must be at least 6 characters long.'
+    //     ];
+    // }
+
+    // If there are errors, return the response
+    if (!empty($response['errors'])) {
+        echo json_encode($response);
+        return;
+    }
+
+   
+}
+// accountUpdate END here
 
 // Qaybtaan Ku Shaqeey Abdirhamaan ⬇️
 ?>
