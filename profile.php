@@ -164,6 +164,14 @@ include("assets/sideBar.php");
                                                     </div>
                                                     <div class="row mb-2">
                                                         <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Phone Number <span class="pull-right">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7 phoneNumber"><span><img width="50px" src="images/typ.webp" alt="loading.."></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
                                                             <h5 class="f-w-500">Role <span class="pull-right">:</span></h5>
                                                         </div>
                                                         <div class="col-sm-9 col-7 profileUserRole"><span></span>
@@ -184,8 +192,15 @@ include("assets/sideBar.php");
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label>Email</label>
-                                                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control emailAsValue">
+                                                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control emailAsValue ">
                                                                 </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label>Phone Number</label>
+                                                                    <input type="number" id="phone" name="phone" placeholder="Phone Number" class="form-control phoneNumber">
+                                                                </div>
+                                                               
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">

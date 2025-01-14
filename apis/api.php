@@ -161,6 +161,7 @@ function readProfile ($conn)
         $row = mysqli_fetch_assoc($select);
         $userNames = $row['fullName'];
         $email = $row['email'];
+        $phone = $row['phone'];
         $userRole = $row['role'];
         $userProfile = $row['profileImage'];
         $userCover = $row['coverImage'];
@@ -175,7 +176,7 @@ function readProfile ($conn)
         {
             $userProfile = "images/dprofile.webp";
         }
-        echo json_encode(['status'=>'success', 'userName'=>$userNames, 'email'=>$email,'userRole'=>$userRole,'userProfile'=>$userProfile,'userCover'=>$userCover]);
+        echo json_encode(['status'=>'success', 'userName'=>$userNames, 'email'=>$email,'userRole'=>$userRole,'phone'=>$phone,'userProfile'=>$userProfile,'userCover'=>$userCover]);
 
     }
     else
@@ -237,12 +238,21 @@ function accountUpdate($conn)
             'input' => 'email',
             'message' => 'Email is required.'
         ];
+
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $response['errors'][] = [
             'input' => 'email',
             'message' => 'Invalid email format.'
         ];
     }
+
+        // Validate Phone Number
+        if (empty($phone)) {
+            $response['errors'][] = [
+                'input' => 'phone',
+                'message' => 'Phone Number is required.'
+            ];
+        }
     // Update function
     function update($conn)
     {
@@ -258,7 +268,7 @@ function accountUpdate($conn)
             $newPassword = $currentPassword;
         }
         // The User Update Function
-        $update = mysqli_query($conn, "UPDATE users SET fullName = '$fullName', email = '$email' , password = '$newPassword' WHERE id = '$userId' ");
+        $update = mysqli_query($conn, "UPDATE users SET fullName = '$fullName', email = '$email',phone = '$phone' , password = '$newPassword' WHERE id = '$userId' ");
         if ($update)
         {
             echo json_encode(['status' => 'success', 'message' => 'successfully Updated']);

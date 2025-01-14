@@ -4,7 +4,7 @@ $(document).ready(function () {
     
 
 
-// Profile Request
+// Profile Read Request
 function readProfile()
 {
     $.ajax({
@@ -18,6 +18,8 @@ function readProfile()
                 $(".profileUserName").html(response.userName);
                 $(".profileUserRole").html(response.userRole);
                 $(".profileUserEmail").html(response.email);
+                $(".phoneNumber").html(response.phone);
+                $(".profileUserEmail").html(response.email);
                 $(".profileImage").attr("src", response.userProfile);
                 $(".coverImage").html(`<img width="100%" height="100%" src='${response.userCover}'>`);
             }
@@ -28,6 +30,7 @@ function readProfile()
         }
     });
 }
+// Read Inputs
 function readSProfile()
 {
     $.ajax({
@@ -41,6 +44,7 @@ function readSProfile()
               
                 $(".userNameAsValue").val(response.userName);
                 $(".emailAsValue").val(response.email);
+                $(".phoneNumber").val(response.phone);
             }
             else if(response.status == "error")
             {
@@ -161,6 +165,14 @@ $(document).on("submit", "#accountUpdate", function (e) {
         emailInput.addClass("is-invalid").after('<div class="error-message text-danger">Please enter a valid email address.</div>');
         isValid = false;
     }
+
+      // Phone Number Validation
+      const phoneNumberInput = $("#phone");
+      const phone = phoneNumberInput.val().trim();
+      if (!phone) {
+        phoneNumberInput.addClass("is-invalid").after('<div class="error-message text-danger">Phone Number is required.</div>');
+          isValid = false;
+      }
 
     // Current Password Validation
     const currentPasswordInput = $("#currentPassword");
