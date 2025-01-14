@@ -24,7 +24,7 @@ Welcome to the **Tailor Management System (TMS)**! This PHP-based application is
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/tms.git
+   git clone https://github.com/d-i-v7/tms.git
    cd tms
    ```
 
